@@ -49,11 +49,13 @@ class Program
             return;
         }
 
+        Console.WriteLine($"Клієнт відправив пост-запит");
         using var reader = new StreamReader(request.InputStream, Encoding.UTF8);
         string numberStr = await reader.ReadToEndAsync();
 
         if (int.TryParse(numberStr, out int number))
         {
+            Console.WriteLine($"Клієнт відправив число " + number);
             int result = number + 1;
             byte[] buffer = Encoding.UTF8.GetBytes(result.ToString());
 
